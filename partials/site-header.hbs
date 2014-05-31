@@ -1,0 +1,10 @@
+<section class="site-bar">
+    {{> menu}}
+    <header id="site-intro">
+        <a class="blog-logo" href="{{@blog.url}}">{{#if @blog.logo}}<figure><img src="{{@blog.logo}}" alt="Joel G Goodman" /></figure>{{/if}}
+        <h1 class="blog-title">{{@blog.title}}</h1>
+        </a>
+        <div class="blog-description">{{@blog.description}}</div>
+    </header>
+    <button id="menu-open" class="menu-toggle"><img src="{{asset "images/menu.svg"}}" alt="Menu Toggle Icon" class="iconic" /> <span>Menu</span></button>
+</section>

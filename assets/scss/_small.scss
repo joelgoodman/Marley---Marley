@@ -1,0 +1,145 @@
+@media screen and (min-width: 600px) {
+    body {
+        .bg-image, .content, #site-intro, #menu-open {
+            @include transition(all .3s ease );
+        }
+        #site-intro {
+            display: block;
+        }
+        #blog-menu, #site-intro {
+            @include transition(all .3s ease );
+        }
+        #blog-menu {
+            position: absolute;
+            display: block;
+            @include transform(translate(-100%));
+            width: 100%;
+            background: transparent;
+            padding-top: 2em;
+            ul {
+                list-style: none;
+                li {
+                    display: block;
+                    font-size: 3em;
+                    font-weight: 100;
+                    padding: 0 0 0 0;
+                    margin: 0 0 0 0;
+                    line-height: 1;
+                    border-left: 3px solid transparent;
+                    &:hover {
+                        &.green-light {
+                           border-left: 3px solid $green;
+                        }
+                        &.blue-light {
+                            border-left: 3px solid $blue;
+                        }
+                        &.pink-light {
+                            border-left: 3px solid $pink;
+                        }
+                        &.yellow-light {
+                            border-left: 3px solid $yellow;
+                        }
+                    }
+                    a {
+                        color: rgba(#fff, .9);
+                        display: block;
+                        padding: .15em .25em .35em;
+                        border-bottom: 1px solid rgba(#000, .3);
+                        font-weight: $normal;
+                    }
+                }
+            }
+        }
+        &.menu-open {
+            .bg-image {
+                @include filter(blur(3px));
+                @include transform();
+                @include transition(all .3s ease );
+            }
+            .content, #site-intro, #menu-open {
+                @include filter();
+                @include transform();
+            }
+            #site-intro, #menu-open {
+                @include transform(translate(100%));
+            }
+            #blog-menu {
+                @include transform(translate(0));
+            }
+        }
+    }
+    .site-bar {
+        display: block;
+        width: 35%;
+        position: fixed;
+        height: 100%;
+        left: 0;
+        overflow: hidden;
+        .menu-toggle {
+            -webkit-appearance: none;
+            display: block;
+            margin: 0 auto;
+            font-size: 5em;
+            font-weight: $hairline;
+            text-transform: uppercase;
+            padding: 0 .85em .15em;
+            line-height: 1;
+            color: rgba(#000, .8);
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            @include transition(all .3s ease-in-out);
+            &:hover {
+                color: $blue;
+            }
+            &#menu-open {
+                background-color: rgba(#f7f7f7, .3);
+                border: 0;
+            }
+            &#menu-close {
+                background-color: rgba(#f7f7f7, .3);
+                border: 0;
+                position: absolute;
+                span {
+                    position: relative;
+                    font-size: 1.5em;
+                    line-height: 0;
+                    top: 6px;
+                    left: auto;
+                    margin-left: -0.65em;
+                    display: none;
+                }
+            }
+        }
+    }
+    .content {
+        width: 65%;
+        margin-left: 35%;
+        padding: 2em 7%;
+        font-size: 1.1em;
+        > article {
+            white-space: normal;
+            overflow: hidden;
+        }
+        .post-header {
+            h2 {
+                font-weight: $normal;
+                font-size: 1.2em;
+                margin-bottom: .65em;
+                a {
+                    color: #333;
+                }
+            }
+            border-bottom: 1px solid $pink;
+            margin-bottom: 1em;
+        }
+
+    }
+}
+@media screen and (min-width: 1000px) {
+    body .site-bar .menu-toggle#menu-close {
+        span {
+            display: inline;
+        }
+    }
+}

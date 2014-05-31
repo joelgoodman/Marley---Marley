@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+<main class="content" role="main">
+
+    <article class="{{post_class}}">
+        {{! Everything inside the #post tags pulls data from the post }}
+        {{#post}}
+            <header class="post-header">
+                <h1 class="post-title">{{{title}}}</h1>
+                <aside class="post-meta">
+                    <span class="dateline">Published <time datetime="{{date format='YYYY-MM-DD'}}">{{date timeago="true"}}</time></span>
+                </aside>
+            </header>
+            <section class="post-content">
+                {{content}}
+            </section>
+
+            <footer class="post-footer">
+                {{tags prefix="// "}}
+                <section class="author">
+                    {{> author}}
+                </section>
+            </footer>
+        {{/post}}
+
+    </article>
+    <p class="ghost-credit"><a href="http://ghost.org" title="Published with Ghost" class="icon-ghost"></a></p>
+
+</main>

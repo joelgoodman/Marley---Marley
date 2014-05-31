@@ -1,0 +1,45 @@
+{{!< default}}
+
+{{! The comment above "< default" means - insert everything in this file into
+    the {body} of the default.hbs template, which contains our header/footer. }}
+
+{{! The main content area on the homepage }}
+<main class="content" role="main">
+
+    {{! Each post will be output using this markup }}
+    {{#foreach posts}}
+        {{#if @first}}
+            <article class="{{post_class}} first-post">
+                <header class="post-header">
+                    <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+                </header>
+                <section class="post-excerpt">
+                    {{content words="150"}}
+                    <p><a class="read-more" href="{{url}}">(more&hellip;)</a></p>
+                </section>
+                <footer class="post-footer post-meta"><span class="dateline">Published <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time></span> {{tags prefix="// "}}</footer>
+            </article>
+        {{else}}
+            <article class="{{post_class}}">
+                <header class="post-header">
+                    <h2 class="post-title"><a href="{{url}}">{{{title}}}</a></h2>
+                </header>
+                <section class="post-excerpt">
+                {{#has tag="quote, vanity"}}
+                    {{content}}
+                {{else}}
+                    <p>{{excerpt}} [ &hellip; ]</p>
+                    <p><a class="read-more" href="{{url}}">(more&hellip;)</a></p>
+                {{/has}}
+                </section>
+                <footer class="post-footer post-meta"><span class="dateline">Published <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMM YYYY"}}</time></span> {{tags prefix="// "}}</footer>
+            </article>
+
+            </article>
+        {{/if}}
+    {{/foreach}}
+
+    {{!! After all the posts, we have the previous/next pagination links }}
+    {{pagination}}
+
+</main>

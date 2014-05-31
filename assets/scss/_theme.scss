@@ -1,0 +1,299 @@
+/* ==========================================================================
+   1. Icons - Sets up the icon font and respective classes
+   ========================================================================== */
+
+/* Import the font file with the icons in it */
+@font-face {
+    font-family: 'icons';
+    src:url('../fonts/icons.eot');
+    src:url('../fonts/icons.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/icons.woff') format('woff'),
+        url('../fonts/icons.ttf') format('truetype'),
+        url('../fonts/icons.svg#icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* Apply these base styles to all icons */
+.icon-ghost:before,
+.icon-feed:before,
+.icon-twitter:before,
+.icon-google-plus:before,
+.icon-facebook:before {
+    font-family: 'icons';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    text-decoration: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Each icon is created by inserting the corret character into the
+   content of the :before pseudo element. Like a boss. */
+.icon-ghost:before {
+    content: "\e000";
+}
+.icon-feed:before {
+    content: "\e001";
+}
+.icon-twitter:before {
+    content: "\e002";
+    font-size: 1.1em;
+}
+.icon-google-plus:before {
+    content: "\e003";
+}
+.icon-facebook:before {
+    content: "\e004";
+}
+
+body {
+    background-color: lighten(#000,2);
+    .bg-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-size: cover;
+        display: block;
+        z-index: -1;
+    }
+    .bg-image, .content, #site-intro, #menu-open {
+        @include transition(all .4s ease);
+    }
+    #blog-menu {
+            position: fixed;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(#eaeaea, .8);
+            z-index: 1000;
+            ul {
+                list-style: none;
+                li {
+                    display: block;
+                    font-size: 4.3em;
+                    font-weight: 100;
+                    padding: 0 0 0 0;
+                    margin: 0 0 0 0;
+                    line-height: 1;
+                    a {
+                        color: rgba(#000, .9);
+                        display: block;
+                        padding: .15em .25em .35em;
+                        border-bottom: 1px solid rgba(#000, .3);
+                    }
+                }
+            }
+        }
+    &.menu-open {
+        .bg-image, .content, #site-intro, #menu-open {
+            @include filter(blur(3px));
+            @include transform(scale(0.6));
+        }
+        #blog-menu {
+            display: block;
+        }
+
+    }
+}
+.site-bar {
+    display: block;
+    height: 100%;
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    > nav {
+        display: none;
+        position: absolute;
+        width: 100%;
+    }
+    #site-intro {
+        text-align: center;
+        .blog-logo {
+            display: block;
+            max-width: 80%;
+            margin: 2em auto 1em;
+            figure {
+                display: block;
+                width: 50%;
+                line-height: 0;
+                border-radius: 50%;
+                overflow: hidden;
+                margin: 0 auto 1em;
+                img {
+                    max-width: 100%;
+                }
+            }
+        }
+        .blog-title {
+            font-weight: $normal;
+            color: #fff;
+            font-size: 2.3em;
+            text-shadow: 0 2px 4px rgba(#000, .2)
+        }
+        .blog-description {
+            padding: 0 5%;
+            font-size: 1.2em;
+            font-style: italic;
+            line-height: 1.3em;
+            margin-bottom: 2em;
+            color: #fff;
+            max-width: 530px;
+            margin: 0 auto;
+            text-shadow: 0 2px 4px rgba(#000, .2);
+        }
+    }
+    .menu-toggle {
+        -webkit-appearance: none;
+        display: block;
+        margin: 0 auto;
+        font-size: 3em;
+        font-weight: $hairline;
+        text-transform: uppercase;
+        padding: 0 .85em .15em;
+        line-height: 1;
+        color: rgba(#000, .8);
+        &#menu-open {
+            background: rgba(#fff, .2);
+            border: 1px solid rgba(#fff, .3);
+        }
+        &#menu-close {
+            background: transparent;
+            border: 0;
+            position: relative;
+            span {
+                position: absolute;
+                left: -1%;
+                font-size: 1.5em;
+                top: -17px;
+            }
+        }
+    }
+}
+.content {
+    background: rgba(#f7f7f7, .9);
+    padding: 2em 7%;
+    font-size: 1.3em;
+    overflow-y: hidden;
+    min-height: 100%;
+    article {
+        margin-bottom: 3em;
+    }
+
+    .post-header {
+        h2 {
+            font-weight: $normal;
+            font-size: 1em;
+            margin-bottom: .65em;
+            a {
+                color: #333;
+            }
+        }
+        border-bottom: 1px solid $pink;
+        margin-bottom: 1em;
+        h1 {
+            display: inline-block;
+            width: 70%;
+        }
+        > .post-meta {
+            display: inline-block;
+            width: 29%;
+            text-align: right;
+        }
+    }
+    .post-meta {
+        font-size: .65em;
+        .dateline {
+            //color: $orange;
+        }
+        > a {
+            padding: .15em .5em .25em;
+            background: rgba(0,0,0,.75);
+            display: inline-block;
+            color: #fff;
+            border-radius: 5px;
+            margin: .25em;
+            @include transition(all .2s ease-in-out);
+            &:hover {
+                background: $blue;
+            }
+        }
+    }
+}
+#infscr-loading {
+    width: 80%;
+    height: 14px;
+    margin: .3em auto 3em;
+    background-color: $blue;
+    > img { display: none !important; }
+    > div { display: none !important; }
+    @include animation(opacity .3s ease infinite);
+}
+
+.social-links {
+    padding: 0 1em;
+    li {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        margin-right: .55em;
+        a {
+            display: block;
+            span {
+                position: absolute;
+                left: -32000px;
+            }
+            .iconic {
+                fill: darken(#f7f7f7, 40);
+                @include transition(fill .3s ease-in-out);
+                &:hover {
+                    fill: $pink;
+                }
+
+            }
+        }
+    }
+}
+.author {
+    background-color: rgba(#fff, .3);
+    padding: 1em;
+    h4 {
+        font-weight: $normal;
+        font-size: 1.4em;
+        margin-bottom: .35em;
+    }
+    p {
+        font-weight: normal;
+        font-style: italic;
+    }
+}
+.author-meta {
+    display: block;
+    width: 100%;
+    border-top: 1px solid lighten(#444, 40);
+    padding: .35em 1em .5em;
+    list-style: none;
+    margin-bottom: 0;
+    li {
+        display: inline;
+        padding-right: .5em;
+    }
+}
+.ghost-credit {
+    text-align: center;
+    font-size: .85em;
+    a {
+        color: #444;
+    }
+}
+// Media queries
+@import 'small';
