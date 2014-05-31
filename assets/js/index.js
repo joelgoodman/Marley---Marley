@@ -26,8 +26,21 @@
         casperFullImg();
         $(window).smartresize(casperFullImg);
 
-        $(".menu-toggle").on('click', function() {
-          $('body').toggleClass('menu-open');
+        function menuAnimation() {
+          $('#blog-menu').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
+            $(this).removeClass();
+          });
+        }
+
+        $("#menu-open").on("click", function() {
+          $('body').addClass('menu-open');
+          // $('#blog-menu').addClass("fadeInDown animated");
+          // menuAnimation();
+        });
+        $("#menu-close").on("click", function() {
+          // $('#blog-menu').addClass("fadeOutDown animated");
+          // menuAnimation();
+          $('body').removeClass('menu-open');
         });
         // infinite scroll
         $('.content').infinitescroll({
