@@ -503,7 +503,7 @@ body {
   .site-bar .menu-toggle {
     -webkit-appearance: none;
     display: block;
-    margin: 0 auto;
+    margin: 0 auto 1em;
     font-size: 3em;
     font-weight: 100;
     text-transform: uppercase;
@@ -554,13 +554,19 @@ body {
       background: rgba(0, 0, 0, 0.75);
       display: inline-block;
       color: #fff;
-      border-radius: 5px;
+      border-radius: 3px;
       margin: .25em;
       -webkit-transition: all 0.2s ease-in-out;
       -moz-transition: all 0.2s ease-in-out;
       transition: all 0.2s ease-in-out; }
       .content .post-meta > a:hover {
         background: #10cfed; }
+      .content .post-meta > a.comment-link {
+        background: rgba(255, 255, 255, 0.75);
+        color: #444; }
+        .content .post-meta > a.comment-link:hover {
+          background: #ff00a7;
+          color: #fff; }
 
 #infscr-loading {
   width: 80%;
@@ -587,17 +593,26 @@ body {
       .social-links li a span {
         position: absolute;
         left: -32000px; }
-      .social-links li a .iconic {
-        fill: #919191;
-        -webkit-transition: fill 0.3s ease-in-out;
-        -moz-transition: fill 0.3s ease-in-out;
-        transition: fill 0.3s ease-in-out; }
-        .social-links li a .iconic:hover {
+      .social-links li a svg {
+        width: 100%; }
+        .social-links li a svg .social-fill {
+          -webkit-transition: fill 0.3s ease;
+          -moz-transition: fill 0.3s ease;
+          transition: fill 0.3s ease;
+          fill: #919191; }
+        .social-links li a svg:hover .social-fill {
           fill: #ff00a7; }
 
 .author {
   background-color: rgba(255, 255, 255, 0.3);
-  padding: 1em; }
+  padding: 1em;
+  margin: 2em 0;
+  border-left: 4px solid #51fa44;
+  -webkit-transition: border-left 1.3s ease-in-out;
+  -moz-transition: border-left 1.3s ease-in-out;
+  transition: border-left 1.3s ease-in-out; }
+  .author:hover {
+    border-left: 4px solid #10cfed; }
   .author h4 {
     font-weight: 300;
     font-size: 1.4em;
@@ -762,5 +777,12 @@ body {
 @media screen and (min-width: 1000px) {
   body .site-bar .menu-toggle#menu-close span {
     display: inline; } }
+@media screen and (min-width: 900px) {
+  body #blog-menu {
+    padding-top: 0; }
+    body #blog-menu ul li {
+      font-size: 4em; }
+      body #blog-menu ul li a {
+        padding: .15em .45em .35em; } }
 
 /*# sourceMappingURL=style.css.map */

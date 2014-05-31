@@ -223,7 +223,7 @@ body {
     .menu-toggle {
         -webkit-appearance: none;
         display: block;
-        margin: 0 auto;
+        margin: 0 auto 1em;
         font-size: 3em;
         font-weight: $hairline;
         text-transform: uppercase;
@@ -288,11 +288,19 @@ body {
             background: rgba(0,0,0,.75);
             display: inline-block;
             color: #fff;
-            border-radius: 5px;
+            border-radius: 3px;
             margin: .25em;
             @include transition(all .2s ease-in-out);
             &:hover {
                 background: $blue;
+            }
+            &.comment-link {
+                background: rgba(255,255,255,.75);
+                color: #444;
+                &:hover {
+                    background: $pink;
+                    color: #fff;
+                }
             }
         }
     }
@@ -320,11 +328,16 @@ body {
                 position: absolute;
                 left: -32000px;
             }
-            .iconic {
-                fill: darken(#f7f7f7, 40);
-                @include transition(fill .3s ease-in-out);
+            svg {
+                width: 100%;
+                .social-fill {
+                    @include transition(fill .3s ease);
+                    fill: darken(#f7f7f7, 40);
+                }
                 &:hover {
-                    fill: $pink;
+                    .social-fill {
+                        fill: $pink;
+                    }
                 }
 
             }
@@ -334,6 +347,12 @@ body {
 .author {
     background-color: rgba(#fff, .3);
     padding: 1em;
+    margin: 2em 0;
+    border-left: 4px solid $green;
+    @include transition(border-left 1.3s ease-in-out);
+    &:hover {
+        border-left: 4px solid $blue;
+    }
     h4 {
         font-weight: $normal;
         font-size: 1.4em;
@@ -365,3 +384,16 @@ body {
 }
 // Media queries
 @import 'small';
+@media screen and (min-width: 900px) {
+    body {
+        #blog-menu {
+            padding-top: 0;
+            ul li {
+                font-size: 4em;
+                a {
+                    padding: .15em .45em .35em;
+                }
+            }
+        }
+    }
+}
