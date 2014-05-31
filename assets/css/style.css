@@ -531,6 +531,11 @@ body {
   min-height: 100%; }
   .content article {
     margin-bottom: 3em; }
+  .content .post-excerpt p, .content .post-content p {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto; }
   .content .post-header {
     border-bottom: 1px solid #ff00a7;
     margin-bottom: 1em; }

@@ -256,6 +256,11 @@ body {
     article {
         margin-bottom: 3em;
     }
+    .post-excerpt, .post-content {
+        p {
+            @include hyphens(auto);
+        }
+    }
 
     .post-header {
         h2 {
